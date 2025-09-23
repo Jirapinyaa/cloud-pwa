@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PWA Cloud on Vercel</title>
-  <link rel="manifest" href="/manifest.json" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My PWA</title>
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    body { font-family: sans-serif; text-align: center; margin: 20px; }
+    img { margin: 10px; width: 200px; height: auto; }
+  </style>
 </head>
 <body>
-  <h1>PWA ดึงภาพจาก Cloud (Vercel)</h1>
-  <button id="loadBtn">โหลดภาพ</button>
-  <div id="gallery"></div>
+  <h1>My PWA Images</h1>
 
-  <script src="app.js"></script>
+  <!-- รูปภาพ -->
+  <img src="/images/1.jpg" alt="Image 1">
+  <img src="/images/2.jpg" alt="Image 2">
+  <img src="/images/3.jpg" alt="Image 3">
+  <img src="/images/4.jpg" alt="Image 4">
+
+  <!-- Script หลัก -->
+  <script src="/app.js"></script>
+
+  <!-- Register Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch(err => console.error("❌ SW registration failed:", err));
+    }
+  </script>
 </body>
 </html>
+
