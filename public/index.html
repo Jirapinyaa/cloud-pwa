@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My PWA</title>
+  <title>My PWA Gallery</title>
   <link rel="manifest" href="/manifest.json">
   <style>
     body { font-family: sans-serif; text-align: center; margin: 20px; }
-    img { margin: 10px; width: 200px; height: auto; }
+    img { max-width: 90%; height: auto; margin: 20px 0; }
+    button { padding: 10px 20px; margin: 5px; font-size: 16px; }
   </style>
 </head>
 <body>
-  <h1>My PWA Images</h1>
+  <h1>My PWA Gallery</h1>
 
-  <!-- รูปภาพ -->
-  <img src="/images/1.jpg" alt="Image 1">
-  <img src="/images/2.jpg" alt="Image 2">
-  <img src="/images/3.jpg" alt="Image 3">
-  <img src="/images/4.jpg" alt="Image 4">
+  <div id="gallery">
+    <img id="current-image" src="" alt="Gallery Image">
+  </div>
 
-  <!-- Script หลัก -->
+  <div>
+    <button id="prev-btn">Previous</button>
+    <button id="next-btn">Next</button>
+  </div>
+
   <script src="/app.js"></script>
 
-  <!-- Register Service Worker -->
   <script>
+    // Register Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
         .then(() => console.log("✅ Service Worker registered"))
@@ -32,4 +35,3 @@
   </script>
 </body>
 </html>
-
